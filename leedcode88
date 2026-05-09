@@ -1,0 +1,27 @@
+i指向nums1最后一个非零元素，j指向nums2最后一个非零元素，k指向nums1最后一个元素，比较nums1和nums2的最后一个非零元素，将大的一个数放到nums1的最后一个元素，
+第一个while循环用来处理nums2的非零元素比nums1非零元素大的情况，比如nums1=[1,2,3,0,0,0],nums2=[4,5,6]，第二个while循环用来处理nums1的非零元素比nums2的非零元素都大的情况，
+比如nums1=[4,5,6,0,0,0]，nums2=[1,2,3]，这时第一个while循环结束的结果是nums1=[4,5,6,4,5,6],通过第二个while循环将nums2的非零元素放到nums1的前几个元素
+作者：日落于西山之下
+来源：力扣（LeetCode）
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i=m-1;
+        int j=n-1;
+        int k=m+n-1;
+        while(i>=0&&j>=0){
+            if(nums1[i]>nums2[j]){
+                nums1[k]=nums1[i];
+                i--;
+            }else{
+                nums1[k]=nums2[j];
+                j--;
+            }
+            k--;
+        }
+        while(j>=0){
+            nums1[k]=nums2[j];
+            j--;
+            k--;
+        }
+    }
+}
