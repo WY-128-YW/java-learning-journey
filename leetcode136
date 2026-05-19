@@ -1,0 +1,20 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);//对数组从小到大排序
+        int slow=0;int fast=1;//定义快慢指针
+        while(fast<nums.length){
+            if(nums[slow]==nums[fast]){
+                //是一对相等的数，跳过这两个数
+                 slow+=2;fast+=2;
+            }else{
+                return nums[slow];//找到落单元素，slow指向它
+            }
+        }
+        return nums[slow];
+    }
+}
+
+作者：日落于西山之下
+链接：https://leetcode.cn/problems/single-number/solutions/3971011/yun-xing-shi-jian-you-dian-chang-qiu-da-pwkdt/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
